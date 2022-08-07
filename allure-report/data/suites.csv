@@ -1,0 +1,5 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Sun Aug 07 17:12:12 CEST 2022","Sun Aug 07 17:12:33 CEST 2022","21184","","shopping cart Adding to cart","","shopping cart Adding to cart","should add element to cart","should add element to cart",""
+"passed","Sun Aug 07 17:11:46 CEST 2022","Sun Aug 07 17:12:12 CEST 2022","26047","","e-shop go to Logging in","","e-shop go to Logging in","should log in","should log in",""
+"passed","Sun Aug 07 17:11:51 CEST 2022","Sun Aug 07 17:12:12 CEST 2022","21262","e-shop go to","Logging in","","","","should log in",""
+"passed","Sun Aug 07 17:12:12 CEST 2022","Sun Aug 07 17:12:33 CEST 2022","21162","shopping cart","Adding to cart","","","","should add element to cart",""
