@@ -17,7 +17,7 @@ export class LoginPage {
     }
 
     static checkIfMyAccountIsOpen(){
-        cy.get('.page-heading').contains("My account");
+        cy.get('.page-heading').should('have.text', 'My account');
     }
     
     static failedLogIn(){
