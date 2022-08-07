@@ -20,7 +20,7 @@ context('e-shop go to', () => {
             LoginPage.clickLogInButton();
             LoginPage.checkIfMyAccountIsOpen();
         })
-        it('shouldn not log in', function (){
+        it('should not log in', function (){
             MainPage.clickSignButton();
             cy.get('#email').type(this.signInData[1].email);
             cy.get('#passwd').type(this.signInData[1].password)
@@ -30,23 +30,24 @@ context('e-shop go to', () => {
     })
 })
 
-// context('shopping cart', () => {
-//     beforeEach(() => {
-//         LoginPage.openAutomationPracticeSignInPage();
-//         LoginPage.inputAccount();
-//         LoginPage.clickLogInButton();
-//     })
+context('shopping cart', () => {
+    beforeEach(() => {
+        LoginPage.openAutomationPracticeSignInPage();
+        LoginPage.inputAccount();
+        LoginPage.clickLogInButton();
+        cy.writeFile("./cypress/fixtures/prices.json", []);
+    })
 
-//     describe('Adding to cart', () => {
+    describe('Adding to cart', () => {
         
-//         it('should add element to cart', () => {
-//             MainPage.openAutomationPracticePage();
-//             MainPage.addElementToCart(4);
-//             MainPage.checkIfConfirmationIsOpen();
-//             MainPage.continueShopping();
-//             MainPage.addElementToCart(2);
-//             MainPage.proceedToCheckout();
-//             ShoppingCartPage.gettingPrices();
-//         })
-//     })
-//})
+        it('should add element to cart', () => {
+            MainPage.openAutomationPracticePage();
+            MainPage.addElementToCart("Faded Short Sleeve T-shirts");
+            MainPage.checkIfConfirmationIsOpen();
+            MainPage.continueShopping();
+            MainPage.addElementToCart("Blouse");
+            MainPage.proceedToCheckout();
+            ShoppingCartPage.gettingPrices();
+        })
+    })
+})
