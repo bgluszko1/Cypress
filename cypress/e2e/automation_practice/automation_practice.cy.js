@@ -8,38 +8,45 @@ context('e-shop go to', () => {
     })
 
     describe('Logging in', () => {
-        before(function() {
+        beforeEach(function() {
             cy.fixture('example.json').then(function(signInData){
                 this.signInData = signInData
             })
         })
         it('should log in', function (){
             MainPage.clickSignButton();
-            cy.get('#email').type(this.signInData.email);
-            cy.get('#passwd').type(this.signInData.password)
+            cy.get('#email').type(this.signInData[0].email);
+            cy.get('#passwd').type(this.signInData[0].password);
             LoginPage.clickLogInButton();
             LoginPage.checkIfMyAccountIsOpen();
         })
-    })
-})
-
-context('shopping cart', () => {
-    beforeEach(() => {
-        LoginPage.openAutomationPracticeSignInPage();
-        LoginPage.inputAccount();
-        LoginPage.clickLogInButton();
-    })
-
-    describe('Adding to cart', () => {
-        
-        it('should add element to cart', () => {
-            MainPage.openAutomationPracticePage();
-            MainPage.addElementToCart(4);
-            MainPage.checkIfConfirmationIsOpen();
-            MainPage.continueShopping();
-            MainPage.addElementToCart(2);
-            MainPage.proceedToCheckout();
-            ShoppingCartPage.gettingPrices();
+        it('shouldn not log in', function (){
+            MainPage.clickSignButton();
+            cy.get('#email').type(this.signInData[1].email);
+            cy.get('#passwd').type(this.signInData[1].password)
+            LoginPage.clickLogInButton();
+            LoginPage.failedLogIn();
         })
     })
 })
+
+// context('shopping cart', () => {
+//     beforeEach(() => {
+//         LoginPage.openAutomationPracticeSignInPage();
+//         LoginPage.inputAccount();
+//         LoginPage.clickLogInButton();
+//     })
+
+//     describe('Adding to cart', () => {
+        
+//         it('should add element to cart', () => {
+//             MainPage.openAutomationPracticePage();
+//             MainPage.addElementToCart(4);
+//             MainPage.checkIfConfirmationIsOpen();
+//             MainPage.continueShopping();
+//             MainPage.addElementToCart(2);
+//             MainPage.proceedToCheckout();
+//             ShoppingCartPage.gettingPrices();
+//         })
+//     })
+//})

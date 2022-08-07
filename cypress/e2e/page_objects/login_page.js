@@ -7,8 +7,8 @@ export class LoginPage {
 
     static inputAccount() {
         cy.fixture('example.json').then(signInData => {
-            cy.get('#email').type(signInData.email);
-            cy.get('#passwd').type(signInData.password);
+            cy.get('#email').type(signInData[0].email);
+            cy.get('#passwd').type(signInData[0].password);
         })
     }
 
@@ -18,5 +18,9 @@ export class LoginPage {
 
     static checkIfMyAccountIsOpen(){
         cy.get('.page-heading').contains("My account");
+    }
+    
+    static failedLogIn(){
+        cy.get('#center_column > :nth-child(2) > p').should('have.text',"There is 1 error");
     }
 }
